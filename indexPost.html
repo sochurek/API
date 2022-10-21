@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dokumentace</title>
+        
+    </head>
+    <style>
+
+    </style>
+
+    <body>
+        <p id="post"></p>
+
+    </body>
+    <script>
+    
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://ip-api.com/json/', true);
+
+        request.onload = function () {
+            var data = JSON.parse(this.response);
+            console.log(data);
+            var v = document.getElementById("post").innerText = "Query: " + data["query"] + "\nStatus: " + data["status"] + "\nCountry: " + data["country"] + "\nCountry Code: " + data["countryCode"] + "\nRegion: " + data["region"] + "\nRegion Name: " + data["regionName"] + "\nCity: " + data["city"] + "\nZip Code: " + data["zip"] + "\nLat: " + data["lat"] + "\nLon: " + data["lon"];
+        }
+
+// request se pošle
+request.send();
+    </script>
+</html>
